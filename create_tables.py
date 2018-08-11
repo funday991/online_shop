@@ -40,9 +40,8 @@ def create_tables():
         """,
         """
         CREATE TABLE product_groups (
-            id_product INT NOT NULL REFERENCES product(id),
-            id_group INT NOT NULL REFERENCES groups(id),
-            PRIMARY KEY (id_product, id_group)
+            id_product INT NOT NULL REFERENCES product(id) PRIMARY KEY,
+            id_group INT NOT NULL REFERENCES groups(id)
         )
         """)
     conn = None
