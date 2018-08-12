@@ -89,7 +89,7 @@ class Product(OSBaseTable):
 class Groups(OSBaseTable):
     def __init__(self):
         self.name = 'groups'
-        self.fields = ['id', 'name', 'id_group']
+        self.fields = ['id', 'name', 'id_parent']
 
     def insert_lines(self, values):
         """ Insert line or lines in table """
