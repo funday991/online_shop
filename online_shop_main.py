@@ -33,17 +33,21 @@ class OSBaseTable:
                 conn.close()
 
     def get_by_id(self, line_id):
+        """ Get table line by id """
         print('List of fields:\n' + ' '.join(self.fields) + '\n')
         self.connect(('SELECT * FROM ' + self.name + ' WHERE id = ' + str(line_id),))
 
     def full_list(self):
+        """ Get all table lines """
         print('List of fields:\n' + ', '.join(self.fields) + '\n')
         self.connect(('SELECT * FROM ' + self.name,))
 
     def delete_line_by_id(self, line_id):
+        """ Delete table line by id """
         self.connect(('DELETE FROM ' + self.name + ' WHERE id = ' + str(line_id),))
         print('Successfully deleted.')
 
     def delete_all_lines(self):
+        """ Delete all table lines """
         self.connect(('DELETE FROM ' + self.name,))
         print('Successfully deleted.')
