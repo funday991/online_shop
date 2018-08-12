@@ -17,10 +17,9 @@ HOW IT WORKS:
 1) Function `config()` from `config.py` parses `db.ini` file and saves parameters required for server authorization.
 2) Function `connect()` from `connect.py` checks out the access to the server and prints the database version.
 3) File `online_shop_db.py` includes base methods for db, e.g. `create_tables()` or `drop_db()`.
-4) File `online_shop_main.py` only includes the class `OSBaseTable` with base methods for all tables. As you can see, 
-there is no method which inserts lines into a table. The reason is that different tables consist of different fields,
-so the insertion method will be local for every subclass of `OSBaseTable`. Other methods will be inherited.
+4) File `online_shop_main.py` includes the class `OSBaseTable` with base methods for all tables which is inherited by 
+subclasses connected to each table.
 
 WHAT'S NEXT:
 
-Further the new tables and the subclasses for each required table will be added.
+Further the new tables will be added.

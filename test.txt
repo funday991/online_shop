@@ -1,0 +1,11 @@
+user_status.insert_lines("('Guest', 0), ('Common user', 2), ('Regular customer', 5), ('VIP', 10)")
+
+users.insert_lines("('I.A.Andreev', 'andr92', 'qWeRtY', 'andr92@mail.ru', 89224637583, 773845, 2), ('A.B.Sergeev', 'seriy', '162534', 'seriy@gmail.com', 89829923424, 552321, 2), ('unknown', 'unknown', 'unknown', 'unknown', 89224637583, 773845, 1), ('B.V.Kim', 'kimchenyn', 'qwert12345', 'kimchenyn@ya.ru', 89295863295, 165931, 4), ('D.G.Alexeev', 'alex98', '0987654321', 'alex98@gmail.com', 89228533433, 575523, 2), ('V.I.Petrov', 'vip123', 'mypass', 'vip123@mail.ru', 89324622754, 464365, 3), ('unknown', 'unknown', 'unknown', 'unknown', 89807832423, 450924, 1), ('K.K.Sidorov', 'ksgo', 'qwertasdfgzxcvb', 'ksgomail.ru', 89863734535, 026561, 3), ('unknown', 'unknown', 'unknown', 'unknown', 89220512278, 400256, 1), ('unknown', 'unknown', 'unknown', 'unknown', 89920415356, 682464, 1), ('unknown', 'unknown', 'unknown', 'unknown', 89253362323, 942134, 1)")
+
+product.insert_lines("('Asus Notebook', 49990), ('Dell Laptop', 34990), ('Lenovo Ultrabook', 42990), ('HP Netbook', 24990), ('Apple MacBook', 149990), ('Blue Cloth Case', 3990), ('Red Cloth Case', 3990), ('Yellow Leather Case', 5990),  ('Red Cloth Cover', 2490), ('Green Lether Cover', 4490)")
+
+groups.insert_lines("('Online shop', 1), ('Notebooks', 1), ('Covering', 1), ('Cases', 3), ('Covers', 3)")
+
+product_groups.insert_lines("(1, 2), (2, 2), (3, 2), (4, 2), (5, 2), (6, 4), (7, 4), (8, 4), (9, 5), (10, 5)")
+
+users.connect(("SELECT * FROM users AS u WHERE EXISTS (SELECT 1 FROM user_status AS s WHERE u.id_user_status = s.id AND s.name = 'Regular customer')",))
