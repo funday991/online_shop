@@ -34,7 +34,7 @@ class OSBaseTable:
 
     def get_by_id(self, line_id):
         """ Get table line by id """
-        print('List of fields:\n' + ' '.join(self.fields) + '\n')
+        print('List of fields:\n' + ', '.join(self.fields) + '\n')
         self.connect(('SELECT * FROM ' + self.name + ' WHERE id = ' + str(line_id),))
 
     def full_list(self):
@@ -51,3 +51,58 @@ class OSBaseTable:
         """ Delete all table lines """
         self.connect(('DELETE FROM ' + self.name,))
         print('Successfully deleted.')
+
+
+class UserStatus(OSBaseTable):
+    def __init__(self):
+        self.name = 'user_status'
+        self.fields = ['id', 'name', 'discount']
+
+    def insert_lines(self, values):
+        """ Insert line or lines in table """
+        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
+        print('Successfully inserted.')
+
+
+class Users(OSBaseTable):
+    def __init__(self):
+        self.name = 'users'
+        self.fields = ['id', 'full_name', 'login', 'password', 'email', 'phone', 'sms_code', 'id_user_status']
+
+    def insert_lines(self, values):
+        """ Insert line or lines in table """
+        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
+        print('Successfully inserted.')
+
+
+class Product(OSBaseTable):
+    def __init__(self):
+        self.name = 'product'
+        self.fields = ['id', 'name', 'price']
+
+    def insert_lines(self, values):
+        """ Insert line or lines in table """
+        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
+        print('Successfully inserted.')
+
+
+class Groups(OSBaseTable):
+    def __init__(self):
+        self.name = 'groups'
+        self.fields = ['id', 'name', 'id_group']
+
+    def insert_lines(self, values):
+        """ Insert line or lines in table """
+        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
+        print('Successfully inserted.')
+
+
+class ProductGroups(OSBaseTable):
+    def __init__(self):
+        self.name = 'product_groups'
+        self.fields = ['id_product', 'id_group']
+
+    def insert_lines(self, values):
+        """ Insert line or lines in table """
+        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields) + ") VALUES " + values,))
+        print('Successfully inserted.')
