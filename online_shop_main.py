@@ -32,6 +32,11 @@ class OSBaseTable:
             if conn is not None:
                 conn.close()
 
+    def insert_lines(self, values):
+        """ Insert line or lines in table """
+        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
+        print('Successfully inserted.')
+
     def get_by_id(self, line_id):
         """ Get table line by id """
         print('List of fields:\n' + ', '.join(self.fields) + '\n')
@@ -58,21 +63,11 @@ class UserStatus(OSBaseTable):
         self.name = 'user_status'
         self.fields = ['id', 'name', 'discount']
 
-    def insert_lines(self, values):
-        """ Insert line or lines in table """
-        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
-        print('Successfully inserted.')
-
 
 class Users(OSBaseTable):
     def __init__(self):
         self.name = 'users'
         self.fields = ['id', 'full_name', 'login', 'password', 'email', 'phone', 'sms_code', 'id_user_status']
-
-    def insert_lines(self, values):
-        """ Insert line or lines in table """
-        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
-        print('Successfully inserted.')
 
 
 class Product(OSBaseTable):
@@ -80,21 +75,11 @@ class Product(OSBaseTable):
         self.name = 'product'
         self.fields = ['id', 'name', 'price']
 
-    def insert_lines(self, values):
-        """ Insert line or lines in table """
-        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
-        print('Successfully inserted.')
-
 
 class Groups(OSBaseTable):
     def __init__(self):
         self.name = 'groups'
         self.fields = ['id', 'name', 'id_parent']
-
-    def insert_lines(self, values):
-        """ Insert line or lines in table """
-        self.connect(("INSERT INTO " + self.name + " (" + ', '.join(self.fields[1:]) + ") VALUES " + values,))
-        print('Successfully inserted.')
 
 
 class ProductGroups(OSBaseTable):
