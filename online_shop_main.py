@@ -26,6 +26,7 @@ class OSBaseTable:
                     row = cur.fetchone()
             cur.close()
             conn.commit()
+            print('Success!')
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
         finally:
