@@ -19,6 +19,7 @@ class OnlineShopDB:
                 cur.execute(command)
             cur.close()
             conn.commit()
+            print('Success!')
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
         finally:
